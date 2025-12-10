@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>HBG Event Calculator</title>
+    <meta name="description" content="Heroes Battlegrounds Event Calculator: Calculate when the next in-game event begins based on your server's uptime.">
+    <meta name="author" content="zef">
+    <meta name="keywords" content="Heroes Battlegrounds, HBG, Event Timer, Game Events, Pumpkin Moon, Prototype Event, Game Calculator, roblox">
+</head>
+<body>
+    <div class="container">
+        <h1>HBG Event Calculator</h1>
+        <div class="subtitle">Calculates when the next event begins in your current server.</div>
+
+        <div class="input-group">
+            <label for="uptime">Server Uptime</label>
+            <div class="time-inputs">
+                <div class="time-input-wrapper">
+                    <input type="text" id="hours" maxlength="2" placeholder="00">
+                    <span class="time-label">H</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-input-wrapper">
+                    <input type="text" id="minutes" maxlength="2" placeholder="00">
+                    <span class="time-label">M</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-input-wrapper">
+                    <input type="text" id="seconds" maxlength="2" placeholder="00">
+                    <span class="time-label">S</span>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="calculate()">Calculate Next Event</button>
+
+        <div class="error" id="error"></div>
+
+        <div class="result-box" id="result"></div>
+
+        <div class="info-box">
+            <h3>Event Schedule (Every 75 minutes)</h3>
+            <ul>
+                <li>75 min: Pumpkin Moon</li>
+                <li>150 min: Pumpkin Moon</li>
+                <li>225 min: Pumpkin Moon</li>
+                <li>300 min: Prototype</li>
+                <li>Then repeats...</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            Made by zef
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
