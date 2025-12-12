@@ -184,6 +184,9 @@ button:active {
     color: #6f6fa8;
     font-size: 1.1em;
     font-family: 'Courier New', monospace;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
 }
 
 .event-icon {
@@ -278,4 +281,43 @@ button:active {
         transform: translateY(-100px) translateX(100px) rotate(360deg);
         opacity: 0;
     }
+}
+
+.copy-btn {
+    margin-left: 8px;
+    padding: 4px;
+    background: rgba(120, 60, 255, 0.05); /* less shiny */
+    border: 1px solid rgba(140, 80, 255, 0.15); /* less strong */
+    color: #cfc6ff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+}
+
+.copy-btn:hover {
+    background: rgba(150, 80, 255, 0.15); 
+    border-color: rgba(160, 90, 255, 0.25); 
+}
+
+.copy-icon {
+    stroke: #b8a9ef;
+}
+
+.copy-btn:hover .copy-icon {
+    stroke: #d7caff;
+}
+
+.copy-btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.copy-btn {
+    transform: none !important;
+    box-shadow: none !important;
 }

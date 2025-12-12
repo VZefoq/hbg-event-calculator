@@ -19,6 +19,14 @@ function formatTime(minutes) {
     return `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert(" Copied Timestamp!");
+    }).catch(err => {
+        console.error("Copy failed:", err);
+    });
+}
+
 function calculate() {
     const errorDiv = document.getElementById('error');
     const resultDiv = document.getElementById('result');
@@ -82,11 +90,22 @@ function calculate() {
             const emoji = event.type === "Pumpkin Moon" ? "🎃" : "";
             const imgTag = event.type === "Prototype" ? '<img src="https://static.wikia.nocookie.net/heroes-battlegrounds/images/4/4b/NamuMHB.png" alt="Prototype" class="event-icon">' : "";
             
+            const unixTimestamp = Math.floor((Date.now() / 1000) + (event.minutes * 60));
+            const timestampTag = `<t:${unixTimestamp}:R>`;
+
             html += `
                 <div class="result-item ${cssClass}">
                     <div class="result-label">${index === 0 ? 'Next Event' : `Event ${index + 1}`}</div>
                     <div class="result-value">${emoji}${imgTag} ${event.type}</div>
-                    <div class="result-time">Spawns in ${event.minutes} minutes (${event.time})</div>
+                    <div class="result-time">
+                        Spawns in ${event.minutes} minutes
+                        <button class="copy-btn" onclick="copyToClipboard('${timestampTag}')" title="Copy Discord timestamp">
+                            <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             `;
         });
@@ -127,33 +146,34 @@ inputs.forEach((id, index) => {
             e.preventDefault();
         }
     });
+});
 
     // particle generator
-function createParticles() {
-    const particlesContainer = document.createElement('div');
-    particlesContainer.className = 'particles';
-    document.body.appendChild(particlesContainer);
-    
-    for (let i = 0; i < 20; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
+    function createParticles() {
+        const particlesContainer = document.createElement('div');
+        particlesContainer.className = 'particles';
+        document.body.appendChild(particlesContainer);
         
-        const size = Math.random() * 4 + 2;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        
-        particle.style.left = `${Math.random() * 100}vw`;
-        
-        const duration = Math.random() * 20 + 20;
-        particle.style.animationDuration = `${duration}s`;
-        
-        particle.style.animationDelay = `${Math.random() * 5}s`;
-        
-        particle.style.opacity = Math.random() * 0.3 + 0.1;
-        
-        particlesContainer.appendChild(particle);
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            const size = Math.random() * 4 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            particle.style.left = `${Math.random() * 100}vw`;
+            
+            const duration = Math.random() * 20 + 20;
+            particle.style.animationDuration = `${duration}s`;
+            
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            
+            particle.style.opacity = Math.random() * 0.3 + 0.1;
+            
+            particlesContainer.appendChild(particle);
+        }
     }
-}
-
-window.addEventListener('load', createParticles);
-});
+    
+    window.addEventListener('load', createParticles);
+    
