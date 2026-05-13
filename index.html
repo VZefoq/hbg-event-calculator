@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>HBG Event Calculator</title>
-    <meta name="description" content="Heroes Battlegrounds Event Calculator: Calculate when the next in-game event begins based on your server's uptime.">
+    <title>HBG Prototype Calculator</title>
+    <meta name="description" content="Heroes Battlegrounds Prototype Event Calculator: Calculate when Prototype spawns based on your server uptime and server type.">
     <meta name="author" content="zef">
-    <meta name="keywords" content="Heroes Battlegrounds, HBG, Event Timer, Game Events, Pumpkin Moon, Prototype Event, Game Calculator, roblox">
+    <meta name="keywords" content="Heroes Battlegrounds, HBG, Prototype Event, Event Timer, Game Calculator, roblox">
 </head>
 <body>
     <div class="container">
-        <h1>HBG Event Calculator</h1>
-        <div class="subtitle">Calculates when the next event begins in your current server.</div>
+        <h1>HBG Prototype Calculator</h1>
+        <div class="subtitle">Calculates when Prototype spawns in your current server.</div>
+
+        <div class="input-group">
+            <label>Are you in a private server or public server?</label>
+            <div class="server-options" role="radiogroup" aria-label="Server type">
+                <label class="server-option">
+                    <input type="radio" name="server-type" value="public" checked>
+                    <span>Public Server</span>
+                </label>
+                <label class="server-option">
+                    <input type="radio" name="server-type" value="private">
+                    <span>Private Server</span>
+                </label>
+            </div>
+        </div>
 
         <div class="input-group">
             <label for="uptime">Server Uptime</label>
@@ -34,7 +48,7 @@
             </div>
         </div>
 
-        <button onclick="calculate()">Calculate Next Event</button>
+        <button onclick="calculate()">Calculate Prototype Spawn</button>
 
         <div class="error" id="error"></div>
 
@@ -45,6 +59,7 @@
             <ul>
                 <li>Open HBG Settings</li>
                 <li>Search for Server Uptime</li>
+                <li>Pick public or private server before calculating</li>
             </ul>
         </div>
 
