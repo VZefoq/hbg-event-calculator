@@ -195,17 +195,17 @@ button:active {
     display: block;
 }
 
+.result-list {
+    display: grid;
+    gap: 12px;
+}
+
 .result-item {
-    margin-bottom: 12px;
     padding: 16px;
     border: 1px solid var(--line);
     border-left: 4px solid var(--accent);
     border-radius: 8px;
     background: var(--panel);
-}
-
-.result-item:last-child {
-    margin-bottom: 0;
 }
 
 .result-label {
@@ -325,6 +325,48 @@ button:active {
     stroke: currentColor;
 }
 
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--panel-soft);
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+.page-btn:hover:not(:disabled),
+.page-btn.active {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--text);
+    transform: none;
+}
+
+.page-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.38;
+}
+
+.arrow-btn {
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
 @media (max-width: 520px) {
     body {
         align-items: flex-start;
@@ -359,5 +401,14 @@ button:active {
     .result-time {
         align-items: flex-start;
         flex-wrap: wrap;
+    }
+
+    .pagination {
+        gap: 6px;
+    }
+
+    .page-btn {
+        width: 34px;
+        height: 34px;
     }
 }
